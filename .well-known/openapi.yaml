@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Alchimie Shopify Plugin
+  description: Plugin GPT per aggiornare prodotti, collezioni, pagine e policy del sito Alchimie di Circe, con supporto multilingua (IT, EN, FR, ES).
+  version: '1.0'
+servers:
+  - url: https://www.alchimie-di-circe.myshopify.com/admin/api/2023-10
+paths:
+  /products.json:
+    get:
+      summary: Elenca tutti i prodotti
+      operationId: listProducts
+      responses:
+        '200':
+          description: Lista dei prodotti
+    post:
+      summary: Crea un nuovo prodotto
+      operationId: createProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: Prodotto creato
+  /products/{product_id}.json:
+    put:
+      summary: Aggiorna un prodotto specifico
+      operationId: updateProduct
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdate'
+      responses:
+        '200':
+          description: Prodotto aggiornato
+  /pages/{page_id}.json:
+    put:
+      summary: Aggiorna una pagina (es. policy o pagina statica)
+      operationId: updatePage
+      parameters:
+        - name: page_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageUpdate'
+      responses:
+        '200':
+          description: Pagina aggiornata
+components:
+  schemas:
+    ProductCreate:
+      type: object
+      properties:
+        product:
+          type: object
+          properties:
+            title:
+              type: string
+            body_html:
+              type: string
+            vendor:
+              type: string
+            product_type:
+              type: string
+            tags:
+              type: string
+    ProductUpdate:
+      type: object
+      properties:
+        product:
+          type: object
+          properties:
+            title:
+              type: string
+            body_html:
+              type: string
+            tags:
+              type: string
+    PageUpdate:
+      type: object
+      properties:
+        page:
+          type: object
+          properties:
+            title:
+              type: string
+            body_html:
+              type: string
