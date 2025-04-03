@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Alchimie Shopify Assistant",
+  "name_for_model": "alchimie_shopify",
+  "description_for_human": "Gestisci facilmente prodotti, collezioni, pagine e traduzioni multilingua di Alchimie di Circe da ChatGPT.",
+  "description_for_model": "Plugin per aggiornare risorse Shopify (prodotti, collezioni, pagine, traduzioni multilingua IT/EN/FR/ES) tramite API Admin.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://YOUR-VERCEL-URL.vercel.app/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://YOUR-VERCEL-URL.vercel.app/plugin-logo.png",
+  "contact_email": "support@alchimiedicirce.com",
+  "legal_info_url": "https://alchimiedicirce.com/policies/privacy-policy"
+}

@@ -1,0 +1,40 @@
+openapi: 3.0.1
+info:
+  title: Alchimie Shopify Plugin API
+  description: API per aggiornare prodotti, collezioni, pagine legali, menù e traduzioni (IT/EN/FR/ES) per lo store Shopify di Alchimie di Circe.
+  version: "1.0.0"
+servers:
+  - url: https://{shop}.myshopify.com/admin/api/2023-10
+paths:
+  /products.json:
+    get:
+      summary: Recupera prodotti
+      parameters:
+        - name: tag
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista prodotti
+  /products/{product_id}.json:
+    put:
+      summary: Aggiorna un prodotto
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  type: object
+      responses:
+        '200':
+          description: Prodotto aggiornato
